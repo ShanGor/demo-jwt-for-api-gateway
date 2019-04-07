@@ -11,3 +11,4 @@ Please check the 2 projects for reference.
 - The keystore in the client project, you should generate them separately for Production and UAT environment.
 - The password of the keystore, you should encrypt them properly instead of the way you see in the sample code.
 - The public key, maybe you put it somewhere else instead of putting it in the source, to make sure you can use different version for UAT and Producton.
+- Expiry time in the sample code is 600 seconds, you should make it within 30 seconds in Production.
