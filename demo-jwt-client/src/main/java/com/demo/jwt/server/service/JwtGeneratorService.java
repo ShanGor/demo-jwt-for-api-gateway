@@ -9,7 +9,7 @@
  *  * written consent of HSBC Holdings plc.
  *
  */
-package com.demo.jwt.server.config;
+package com.demo.jwt.server.service;
 
 
 import io.jsonwebtoken.JwtException;
@@ -17,7 +17,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.stereotype.Service;
 
 
 import java.io.InputStream;
@@ -26,24 +29,22 @@ import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.util.Date;
 
-/**
- * Token API filter
- */
-public class JwtUtil {
+@Service
+public class JwtGeneratorService {
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(JwtGeneratorService.class);
     private static final int EXPIRY_SECONDS = 600;
 
+
+    @Autowired
     ResourceLoader resourceLoader;
+    @Value("${jwt.keystore.password}")
     String keystorePassword;
+    @Value("${jwt.keystore.alias}")
     String keyAlias;
+    @Value("${jwt.keystore.path}")
     String keystorePath;
-    public JwtUtil(ResourceLoader resourceLoader, String keystorePath, String keystorePassword, String keyAlias) {
-        this.keystorePath = keystorePath;
-        this.resourceLoader = resourceLoader;
-        this.keystorePassword = keystorePassword;
-        this.keyAlias=keyAlias;
-    }
+
 
     public String generateJwt() {
 

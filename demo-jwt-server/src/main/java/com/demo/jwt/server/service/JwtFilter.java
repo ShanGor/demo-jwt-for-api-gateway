@@ -9,7 +9,7 @@
  *  * written consent of HSBC Holdings plc.
  *
  */
-package com.demo.jwt.server.config;
+package com.demo.jwt.server.service;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
@@ -18,10 +18,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.filter.GenericFilterBean;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.PublicKey;
 import javax.servlet.FilterChain;

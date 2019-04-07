@@ -12,7 +12,7 @@
 
 package com.demo.jwt.server.controller;
 
-import com.demo.jwt.server.config.JwtUtil;
+import com.demo.jwt.server.service.JwtGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ResourceLoader;
@@ -22,17 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
     @Autowired
-    ResourceLoader resourceLoader;
-    @Value("${jwt.keystore.password}")
-    String keystorePassword;
-    @Value("${jwt.keystore.alias}")
-    String keyAlias;
-    @Value("${jwt.keystore.path}")
-    String keystorePath;
+    JwtGeneratorService jwtGenerator;
 
     @RequestMapping("/jwt")
     public String testJwt() {
-        return new JwtUtil(resourceLoader, keystorePath, keystorePassword, keyAlias).generateJwt();
+        return jwtGenerator.generateJwt();
     }
 
     @RequestMapping("/health")
