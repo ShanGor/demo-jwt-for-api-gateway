@@ -4,6 +4,7 @@ In some API gateway scenario, we may need to separate the JWT generation and JWT
 - API (gateway) side holds the public key, to verify the JWT token.
 - Consumer side holds the private key, to generate the JWT token.
 
+This is for `Spring MVC` with `Java7`, if you want `webflux`, please ref to [this one](https://github.com/ShanGor/demo-java11-webflux-jwt-kotlin)
 
 Please check the 2 projects for reference.
 
